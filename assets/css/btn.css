@@ -1,1 +1,260 @@
+.btn, .chk input[type=checkbox]+label {
+display: inline-block;
+*display: inline;
+zoom: 1;
+cursor: pointer;
+border: 2px solid black;
+overflow: visible;
+font-weight: bold;
+font-size: 11.333px;
+text-decoration: none;
+white-space: nowrap;
+color: #000000;
+margin: 5px 2px 2px 0px;
+background-color: #e1eff0;
+text-align:center;
+}
 
+.btn{
+height: 27px;
+}
+
+.btn:hover{
+background-color: #96aba7;
+color: black;
+}
+
+.btn:active, .chk input:checked+label {
+background: #30a84a;
+position: relative;
+top: 1px;
+text-shadow: none;
+-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+}
+
+.btn[disabled]:hover, .btn[disabled]:active{
+border-color: #7b8688;
+background-color: #a30606;
+cursor: not-allowed;
+position: static;
+color: rgb(251, 255, 0);
+text-align: center;
+-moz-box-shadow: none !important;
+-webkit-box-shadow: none !important;
+box-shadow: none !important;
+text-shadow: none !important;
+}
+
+.btn1, .chk input[type=checkbox]+label {
+display: inline-block;
+*display: inline;
+zoom: 1;
+cursor: pointer;
+border: 2px solid black;
+overflow: visible;
+font-weight: bold;
+font-size: 11.333px;
+text-decoration: none;
+white-space: nowrap;
+color: #000000;
+margin: 5px 2px 2px 0px;
+background-color: gray;
+text-align:center;
+}
+
+.btn1:hover{
+background-color: #96aba7;
+color: black;
+}
+
+.btn1:active, .chk input:checked+label {
+background: #30a84a;
+position: relative;
+top: 1px;
+text-shadow: none;
+-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+}
+
+.btn2, .chk input[type=checkbox]+label {
+display: inline-block;
+*display: inline;
+zoom: 1;
+cursor: pointer;
+border: 2px solid black;
+overflow: visible;
+font-weight: bold;
+font-size: 11.333px;
+text-decoration: none;
+white-space: nowrap;
+color: #000000;
+margin: 5px 2px 2px 0px;
+background-color: #96aba7;
+text-align:center;
+}
+
+.btn2:hover{
+background-color: #96aba7;
+color: black;
+}
+
+.btn2:active, .chk input:checked+label {
+background: #30a84a;
+position: relative;
+top: 1px;
+text-shadow: none;
+-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+}
+
+.btn3, .chk input[type=checkbox]+label {
+display: inline-block;
+*display: inline;
+zoom: 1;
+cursor: pointer;
+border: 2px solid black;
+overflow: visible;
+font-weight: bold;
+font-size: 11.333px;
+text-decoration: none;
+white-space: nowrap;
+color: #000000;
+margin: 5px 2px 2px 0px;
+background-color: green;
+text-align:center;
+}
+
+.btn3:hover{
+background-color: #96aba7;
+color: blue;
+}
+
+.btn3:active, .chk input:checked+label {
+background: #30a84a;
+position: relative;
+top: 1px;
+text-shadow: none;
+-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+}
+
+.btn4, .chk input[type=checkbox]+label {
+display: inline-block;
+*display: inline;
+zoom: 1;
+cursor: pointer;
+border: 2px solid black;
+overflow: visible;
+font-weight: bold;
+font-size: 11.333px;
+text-decoration: none;
+white-space: nowrap;
+color: #000000;
+margin: 5px 2px 2px 0px;
+background-color: green;
+text-align:center;
+}
+
+.btn4:hover{
+background-color: #96aba7;
+color: blue;
+}
+
+.btn4:active, .chk input:checked+label {
+background: #30a84a;
+position: relative;
+top: 1px;
+text-shadow: none;
+-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+}
+
+.btn4[disabled]:hover, .btn4[disabled]:active{
+border-color: #7b8688;
+background-color: #a30606;
+cursor: not-allowed;
+position: static;
+color: rgb(251, 255, 0);
+text-align: center;
+-moz-box-shadow: none !important;
+-webkit-box-shadow: none !important;
+box-shadow: none !important;
+text-shadow: none !important;
+}
+
+.chk input[type=checkbox] {
+display:none !important;
+}
+
+.chk input[type=checkbox]+label{
+height: 13px; width:56px;
+}
+
+.bntWhite{
+display: inline-block;
+*display: inline;
+zoom: 1;
+cursor: pointer;
+border: 1px solid #bbb;
+overflow: visible;
+font-weight: bold;
+font-size: 55%;
+text-decoration: none;
+white-space: nowrap;
+color: #555;
+height: 23px;
+margin: 1px 2px 1px 2px;
+background-color: #ddd;
+padding: 2px 8px 0px 8px;
+text-align:center;
+background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(255,255,255,0)));
+background-image: -webkit-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+background-image: -moz-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+background-image: -ms-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+background-image: -o-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+background-image: linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+-webkit-transition: background-color .2s ease-out;
+-moz-transition: background-color .2s ease-out;
+-ms-transition: background-color .2s ease-out;
+-o-transition: background-color .2s ease-out;
+transition: background-color .2s ease-out;
+background-clip: padding-box; /* Fix bleeding */
+-moz-border-radius: .4em;
+-webkit-border-radius: .4em;
+border-radius: .4em;
+-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+text-shadow: 0 1px 0 rgba(255,255,255, .9);
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+.bntWhite:active, .chk input:checked + label{
+background: #e9e9e9;
+position: relative;
+top: 1px;
+text-shadow: none;
+}
+
+.bntWhite[disabled],.bntWhite[disabled]:hover, .bntWhite[disabled]:active{
+border-color: #eaeaea;
+background: #fafafa;
+cursor: not-allowed;
+position: static;
+color: #999;
+-moz-box-shadow: none !important;
+-webkit-box-shadow: none !important;
+box-shadow: none !important;
+text-shadow: none !important;
+}
