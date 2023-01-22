@@ -1,0 +1,1279 @@
+<html>
+<head>
+<title>Huawei Manager 7 Indonesia</title>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/btn.css">
+<link rel="stylesheet" href="css/fonts.css">
+<script src="emui-jquery.js"></script>
+<script src="jquery.min.js"></script>
+<script src="main.js"></script>
+<script src="carrier.js"></script>
+<script src="login.js"></script>
+<script src="ptr.js"></script>
+<div class="swipe">&nbsp;</div>
+<script>
+PullToRefresh.init({
+mainElement: '.swipe',
+onRefresh: function() {
+setTimeout(function(){window.location.reload();}, 100);
+}
+});
+</script>
+</head>
+<body>
+<!-- HEADER START -->
+<div class="stick-navigation">
+<script>
+var _rys = jQuery.noConflict();
+_rys("document").ready(function () {
+_rys(window).scroll(function () {
+if (_rys(this).scrollTop() > 136) {
+_rys('.stick-navigation').addClass("fixed-nav");
+} else {
+_rys('.stick-navigation').removeClass("fixed-nav");
+}
+});
+});
+</script>
+<div class="line-header">
+<div class="header">
+<div class="dehaze" onclick="showSlider()"><img src="images/dehaze.png"></div>
+<div class="header-title" onclick="B4A.CallSub('setIP', true)">http://192.168.8.1/</div>
+
+<div style='display:none' id='Batt'>
+<div class="batt" id='battery'>Battery</div>
+<div style='display:none' id='Batt1' class="batt1"><img id='Batt2' src="images/batt.png"></div>
+</div>
+
+<div class="ante lte1" id='antennastatus'>Ante</div>
+<div class="ante1 lte1"  onclick="openPage('html/antenna.html',$(this).html())"><img src="images/ante.png"></div>
+<div>
+<div class="ante lte2" id='antennastatuss'>Ante</div>
+<div class="ante1 lte2" onclick="openPage('html/content.html#systemsettings',$(this).html())"><img src="images/ante.png"></div>
+
+<div class="info">Info</div>
+<div class="info1" onclick="showInfo(appVersion)"><img src="images/info.png"></div>
+
+<div class="users" id="wifiuser">Users</div>
+<div class="dropdown1 ic_more"><img id="RefreshClient" class="users1" src="images/user.png">
+
+<div class="dropdown-content1">
+<table style="border: 0px;width: 100%;height: 15px;color: rgb(2, 2, 2);font-size: 12px;font-weight: bold">
+<td style="background-color: rgb(17, 189, 189);border: 0px" colspan="3">&emsp;Network Connected Devices&emsp;</td>
+</table>
+<tr>
+<td>
+<input id="n6" type="button" class="btn1" style="height:22px;width:68px;font-weight: bold;text-align:center;color:yellow;font-size:10;display:none" value="WebUi Old" onclick="openPage('html/devicemanagement.html',$(this).html())"></td>
+<td>
+<input id="n7" type="button" class="btn1" style="height:22px;width:68px;font-weight: bold;text-align:center;color:yellow;font-size:10;display:none" value="WebUi Old" onclick="openPage('html/statistic.html',$(this).html())"></td>
+<td>
+<input type="button" class="btn1" style="height:22px;width:68px;font-weight: bold;text-align:center;color:yellow;font-size:10" value="WebUi New" onclick="openPage('html/content.html#devicemanagement',$(this).html())"></td>
+</tr>
+</table>
+<table id="tbclient" style="width:100%;height:20px;text-align:center;font-weight:bold">
+</table>
+</div>
+</div>
+<div style='display:none' id="SimStatus" class="nosim"><img src="images/no_card.png">
+</div>
+<div class="dropdown ic_more" onClick="toggleLight()"><img class="light Lightonoff" id="eyad" src="images/pic_bulboff.png">
+</div>
+</div>
+<!-- HEADER END -->
+
+<!-- SLIDER START -->
+<span class="slider" onclick="hideSlider()"></span>
+<div class="slide">
+<header class="cntr">
+<div class="title">
+<img style="vertical-align:middle" src="images/icon.png"><span>MWNS Official</span></div>
+</header>
+
+<div id="n1" style="display:none" type="button" class="menu-item lte1" onclick="openPage('html/ussd.html',$(this).html())">USSD</div>
+
+<div type="button" class="menu-item lte2" onclick="openPage('html/content.html#ussd',$(this).html())">USSD</div>
+
+<div class="menu-item" type="button" onclick="hideSlider();B4A.CallSub('setBand', true)">Stabilisasi Frequency</div>
+
+<div class="menu-item" type="button" onclick="B4A.CallSub('clr', true)">Hapus Cookies</div>
+
+<div class="lte1">
+<table id="sifcc" style="width: 100%;border: 1.5px solid rgb(0, 0, 0);background-color: red;color: white;font-size: 14px;font-weight: bold">
+<td style="border: 1.5px solid rgb(0, 0, 0)"><img class="img25" src="images/Web-UI.png"/></td>
+<td>Kini webui udah bisa versi darkmode</td>
+</table>
+</div>
+<div class="lte1">
+<table style="width: 100%;background-color: rgb(190, 187, 0);color: rgb(197, 9, 9);font-size: 14px;font-weight: bold">
+<td>WebUi lawas</td>
+</table>
+</div>
+
+<div class="lte2">
+<table style="width: 100%;background-color: green;color: rgb(238, 237, 236);font-size: 14px;font-weight: bold">
+<td><img class="img25" src="images/login-old.png"/></td>
+<td>Kini webui udah bisa versi darkmode</td>
+</table>
+</div>
+<div class="lte2">
+<table style="width: 100%;background-color: rgb(190, 187, 0);color: rgb(197, 9, 9);font-size: 14px;font-weight: bold">
+<td>WebUi Baru</td>
+</table>
+</div>
+
+<span class="lte1">
+<button type="button" class="coll">Pesan<img src="images/al-ar.png"><img class="img25" src="images/login-old.png"/><div id='smsCounts' class="Jumlah SMS"></button>
+<div class="cont">
+<div class="mi" onclick="openPage('html/smsinbox.html?smsinbox',$(this).html())">&emsp;&emsp;Pesan Masuk
+<nav id='smsCounts1' class="smsCounts1">
+</div>
+<div class="mi" onclick="openPage('html/smsinbox.html?smssent',$(this).html())">Pesan Keluar</div>
+</div>
+
+<button type="button" class="coll">Panggilan<img src="images/al-ar.png"><img class="img25" src="images/login-old.png"/></button>
+<div class="cont">
+<div class="mi" onclick="openPage('html/mobileconnection.html',$(this).html())">Terhubung</div>
+<div class="mi" onclick="openPage('html/profilesmgr.html',$(this).html())">Management Profile dan DNS</div>
+<div class="mi" onclick="openPage('html/mobilenetworksettings.html',$(this).html())">Setting Jaringan</div>
+</div>
+
+<button type="button" class="coll">Wlan<img src="images/al-ar.png"><img class="img25" src="images/login-old.png"/></button>
+<div class="cont">
+<div class="mi" onclick="openPage('html/wlanbasicsettings.html',$(this).html())">Pengaturan Dasar</div>
+<div class="mi" onclick="openPage('html/wlanadvanced.html',$(this).html())">Pengaturan Lanjutan</div>
+<div class="mi" onclick="openPage('html/wlanmacfilter.html',$(this).html())">Filter WLAN MAC</div>
+<div class="mi" onclick="openPage('html/dhcp.html',$(this).html())">DHCP</div>
+</div>
+
+<button type="button" class="coll">Keamanan<img src="images/al-ar.png"><img class="img25" src="images/login-old.png"/></button>
+<div class="cont">
+<div id="n4" style="display:none" class="mi" onclick="openPage('html/devicemanagement.html',$(this).html())">Perangkat Terhubung Wifi</div>
+<div id="n5" style="display:none" class="mi" onclick="openPage('html/statistic.html',$(this).html())">Statistik Perangkat Wifi</div>
+<div class="mi" onclick="openPage('html/urlfilter.html',$(this).html())">Filter Nama Domain</div>
+<div class="mi" onclick="openPage('html/macfilter.html',$(this).html())">Filter MAC</div>
+<div class="mi" onclick="openPage('html/lanipfilter.html',$(this).html())">Filter LAN IP</div>
+<div class="mi" onclick="openPage('html/virtualserver.html',$(this).html())">Server Virtual</div>
+<div class="mi" onclick="openPage('html/specialapplication.html',$(this).html())">Aplikasi Spesial</div>
+<div class="mi" onclick="openPage('html/dmzsettings.html',$(this).html())">Setting DMZ</div>
+<div class="mi" onclick="openPage('html/bridgemode.html',$(this).html())">Mode Bridge</div>
+<div class="mi" onclick="openPage('html/upnp.html',$(this).html())">Setting UPnP</div>
+<div class="mi" onclick="openPage('html/nat.html',$(this).html())">Setting NAT</div>
+</div>
+
+<button type="button" class="coll">System<img src="images/al-ar.png"><img class="img25" src="images/login-old.png"/></button>
+<div class="cont">
+<div class="mi" onclick="openPage('html/deviceinformation.html',$(this).html())">Informasi Perangkat</div>
+<div class="mi" onclick="openPage('html/antenna.html',$(this).html())">Setting Antena</div>
+<div class="mi" onclick="openPage('html/restore.html',$(this).html())">Reset ke default</div>
+<div class="mi" id="Reboot">Mulai Ulang</div>
+<div class="mi" id="Shutdown">Matikan Perangkat</div>
+<div class="mi" id="ClearStats">Hapus Data<br>(Last Clear Data : <span id="MonthLastClearTime">(-)</span>)</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+var acc = document.getElementsByClassName("coll");
+var panel = document.getElementsByClassName('cont');
+for (var i = 0; i < acc.length; i++) {
+acc[i].onclick = function() {
+var setClasses = !this.classList.contains('active');
+setClass(acc, 'active', 'remove');
+setClass(panel, 'show', 'remove');
+if (setClasses) {
+this.classList.toggle("active");
+this.nextElementSibling.classList.toggle("show");
+}
+}
+
+function setClass(els, className, fnName) {
+for (var i = 0; i < els.length; i++) {
+els[i].classList[fnName](className);
+}
+}
+}
+});
+</script>
+</nav>
+</span>
+
+<span class="lte2">
+<button type="button" class="coll">Pesan<img class="rote" src="images/al-ar.png"><img class="img25" src="images/Web-UI.png"><div id='smsCounts2' class="smsCounts"></button>
+<div class="cont">
+<div class="mi" onclick="openPage('html/content.html#sms',$(this).html())">&emsp;&emsp;Kotak Pesan
+<nav id='smsCounts3' class="smsCounts1">
+</div>
+</div>
+
+<button type="button" class="coll">Memanggil<img class="rote" src="images/al-ar.png"><img class="img25" src="images/Web-UI.png"></button>
+<div class="cont">
+<div class="mi" onclick="openPage('html/content.html#mobileconnection',$(this).html())">Terhubung</div>
+<div class="mi" onclick="openPage('html/content.html#mobilesearch',$(this).html())">Pencarian Seluler</div>
+</div>
+
+<button type="button" class="coll">Jaringan nirkabel<img class="rote" src="images/al-ar.png"><img class="img25" src="images/Web-UI.png"></button>
+<div class="cont">
+<div class="mi" onclick="openPage('html/content.html#wifieasy',$(this).html())">Pengaturan Dasar</div>
+<div class="mi" onclick="openPage('html/content.html#wifiadvanced',$(this).html())">Pengaturan Lanjutan</div>
+<div class="mi" onclick="openPage('html/content.html#wifisecurity',$(this).html())">Keamanan Wifi</div>
+<div class="mi" onclick="openPage('html/content.html#wifimacfilter',$(this).html())">Filter MAC WLAN</div>
+<div class="mi" onclick="openPage('html/content.html#dhcp',$(this).html())">DHCP</div>
+<div class="mi" onclick="openPage('html/content.html#bridgemode',$(this).html())">Mode Bridge</div>
+</div>
+
+<button type="button" class="coll">Keamanan<img class="rote" src="images/al-ar.png"><img class="img25" src="images/Web-UI.png"></button>
+<div class="cont">
+<div class="mi" onclick="openPage('html/content.html#devicemanagement',$(this).html())">Perangkat Nirkabel Terhubung</div>
+<div class="mi" onclick="openPage('html/content.html#urlfilter',$(this).html())">Filter Nama Domain</div>
+<div class="mi" onclick="openPage('html/content.html#macfilter',$(this).html())">Filter MAC</div>
+<div class="mi" onclick="openPage('html/content.html#lanipfilter',$(this).html())">Filter LAN IP</div>
+<div class="mi" onclick="openPage('html/content.html#virtualserver',$(this).html())">Server Virtual</div>
+<div class="mi" onclick="openPage('html/content.html#specialapplication',$(this).html())">Special Application</div>
+<div class="mi" onclick="openPage('html/content.html#dmzsettings',$(this).html())">Setting DMZ</div>
+<div class="mi" onclick="openPage('html/content.html#upnp',$(this).html())">Setting UPnP</div>
+<div class="mi" onclick="openPage('html/content.html#nat',$(this).html())">Setting NAT</div>
+</div>
+
+<button type="button" class="coll">Sharing<img class="rote" src="images/al-ar.png"><img class="img25" src="images/Web-UI.png"></button>
+<div class="cont">
+<div class="mi" onclick="openPage('html/content.html#sambasettings',$(this).html())">Samba</div>
+<div class="mi" onclick="openPage('html/content.html#dlna',$(this).html())">DLNA</div>
+</div>
+
+<button type="button" class="coll">System<img class="rote" src="images/al-ar.png"><img class="img25" src="images/Web-UI.png"></button>
+<div class="cont">
+<div class="mi" onclick="openPage('html/content.html#deviceinformation',$(this).html())">Informasi Perangkat</div>
+<div class="mi" onclick="openPage('html/content.html#systemsettings',$(this).html())">Pengaturan System</div>
+<div class="mi" onclick="openPage('html/content.html#restore',$(this).html())">Kembalikan pengaturan default</div>
+<div class="mi" id="Reboot1">Mulai Ulang</div>
+<div class="mi" id="Shutdown1">Matikan</div>
+<div class="mi" id="ClearStats1">Hapus Data<br>(Last Clear Data : <span id="MonthLastClearTimee">(-)</span>)</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+var acc = document.getElementsByClassName("coll");
+var panel = document.getElementsByClassName('cont');
+for (var i = 0; i < acc.length; i++) {
+acc[i].onclick = function() {
+var setClasses = !this.classList.contains('active');
+setClass(acc, 'active', 'remove');
+setClass(panel, 'show', 'remove');
+if (setClasses) {
+this.classList.toggle("active");
+this.nextElementSibling.classList.toggle("show");
+}
+}
+
+function setClass(els, className, fnName) {
+for (var i = 0; i < els.length; i++) {
+els[i].classList[fnName](className);
+}
+}
+}
+});
+</script>
+</nav>
+</span>
+
+<fieldset>
+<legend class="color" style="font-size:16;text-align:center">Setting Antenna</legend>
+<div style="text-align:center;color:white;font-weight:bold">
+Pengaturan Bekerja Pada Beberapa Router
+<table style="width: 100%;margin:auto">
+<tr>
+<td class='label' style="text-align:center">Jalur Pertama</td>
+<td style="font-size:12;text-align:center;color:white" id="antenna1">tidak dikenal</td>
+</tr>
+<tr>
+<td class='label' style="text-align:center">Jalur Kedua</td>
+<td style="font-size:12;text-align:center;color:white" id="antenna2">tidak dikenal</td>
+</tr>
+<tr>
+<td colspan="2">
+<select id='antenna'>
+<option style="text-align:center;font-weight:bold" value ="0">Otomatis</option>
+<option style="text-align:center;font-weight:bold" value ="2">Dalam</option>
+<option style="text-align:center;font-weight:bold" value ="1">Luar</option>
+<option style="text-align:center;font-weight:bold" value ="3">Mixed</option>
+</select>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<input type="button" class="btn" id="ReadAntenna" value="Show Data" style="height:26px;width:82px">
+<input type="button" class="btn" id="SaveAntenna" value="Save" style=" height:26px;width:36px">
+</td>
+</tr>
+</table>
+</fieldset>
+
+&emsp;
+
+<fieldset>
+<legend class="color" id="spreadname" style="font-size:16;text-align:center">Device Information</legend>
+
+<table style="border: 0px">
+<td class="Device-inf">Nama Model : </td><td class="Device-inf1" id="modemmodel"></td>
+<table id="i1" style="border: 0px">
+<td class="Device-inf">IMEI : </td><td class="Device-inf1" id="imei"></td>
+<table id="i2" style="border: 0px">
+<td class="Device-inf">IMEI SVN : </td><td class="Device-inf1" id="Svn"></td>
+<table id="i3" style="border: 0px">
+<td class="Device-inf">IMSI : </td><td class="Device-inf1" id="imsi"></td>
+<table id="i4" style="border: 0px">
+<td class="Device-inf">Nomer Serial : </td><td class="Device-inf1" id="serial"></td>
+<table id="i5" style="border: 0px">
+<td class="Device-inf">Nomer Saya : </td><td class="Device-inf1" id="number"></td>
+<table id="i6" style="border: 0px">
+<td class="Device-inf">Nomer ICCID : </td><td class="Device-inf1" id="ICCID"></td>
+<table id="i7" style="border: 0px">
+<td class="Device-inf">Versi Hardware : </td><td class="Device-inf1" id="hardware"></td>
+<table id="i8" style="border: 0px">
+<td class="Device-inf">Versi Software : </td><td class="Device-inf1" id="software"></td>
+<table id="i9" style="border: 0px">
+<td class="Device-inf">Versi Web UI: </td><td class="Device-inf1" id="webui"></td>
+<table id="i10" style="border: 0px">
+<td class="Device-inf">Versi Config : </td><td class="Device-inf1" id="iniversion"></td>
+<table id="i12" style="border: 0px">
+<td class="Device-inf">Subnet Mask : </td><td class="Device-inf1" id="submask"></td>
+<table id="i13" style="border: 0px">
+<td class="Device-inf">LAN Mac Address1 : </td><td class="Device-inf1" id="mac1"></td>
+<table id="i14" style="border: 0px">
+<td class="Device-inf">LAN Mac Address2 : </td><td class="Device-inf1" id="mac2"></td>
+<table id="i15" style="border: 0px">
+<td class="Device-inf">Wifi Mac Address1 : </td><td class="Device-inf1" id="WifiMac0"></td>
+<table id="i16" style="border: 0px">
+<td class="Device-inf">Wifi Mac Address2 : </td><td class="Device-inf1" id="WifiMac1"></td>
+<table id="i26" style="border: 0px">
+<td class="Device-inf">DNS IPv6 : </td><td class="Device-inf1" id="wanipv6dns"></td>
+<table id="i25" style="border: 0px">
+<td class="Device-inf">WAN IPv6 : </td><td class="Device-inf1" id="ipv6"></td>
+<table id="i17" style="border: 0px">
+<td class="Device-inf">Mode Perangkat : </td><td class="Device-inf1" id="supportmode"></td>
+<table id="i18" style="border: 0px">
+<td class="Device-inf">Keluarga Produk : </td><td class="Device-inf1" id="productfam"></td>
+<table id="i19" style="border: 0px">
+<td class="Device-inf">Classify : </td><td class="Device-inf1" id="classify"></td>
+<table id="i20" style="border: 0px">
+<td class="Device-inf">Esn : </td><td class="Device-inf1" id="Esn"></td>
+<table id="i21" style="border: 0px">
+<td class="Device-inf">Meid : </td><td class="Device-inf1" id="Meid"></td>
+<table id="i24" style="border: 0px">
+<td class="Device-inf">Rrc Status : </td><td class="Device-inf1" id="rrc_status"></td>
+<table id="i27" style="border: 0px">
+<td class="Device-inf">Trans Mode : </td><td class="Device-inf1" id="tm"></td>
+</table>
+</fieldset>
+</div>
+</div>
+</div>
+</div>
+<!-- SLIDER END -->
+
+<!-- CONTENT START -->
+<div class="content">
+<div>
+&nbsp;
+</div>
+</fieldset>
+<table style="border: 0px;margin-left:auto;margin-right:auto">
+<th>
+<span style="vertical-align: middle">
+<span style="margin-top:2px;vertical-align: middle">
+<div id="signal1" class="signal-icon" style="width:10px;height:16px"></div>
+<div id="signal2" class="signal-icon" style="width:10px;height:21px"></div>
+<div id="signal3" class="signal-icon" style="width:10px;height:26px"></div>
+<div id="signal4" class="signal-icon" style="width:10px;height:31px"></div>
+<div id="signal5" class="signal-icon" style="width:10px;height:36px"></div>
+</span>
+&nbsp;
+<div>
+<span>&nbsp;</span>
+<span style="text-align: center;font-size: 11px;font-weight:bold;color: red" id="mode">2G/3G/4G</span>
+</span>
+<span>&nbsp;</span>
+</span>
+</th>
+
+<th>
+<div id="photo" style="width:100px;height:85px">
+</div>
+</th>
+
+<th>
+&nbsp;
+<span id="nricon" style="vertical-align: middle">
+<span style="margin-top:2px;vertical-align: middle">
+<div id="nrsignal5" class="signal-icon" style="width:10px;height:36px"></div>
+<div id="nrsignal4" class="signal-icon" style="width:10px;height:31px"></div>
+<div id="nrsignal3" class="signal-icon" style="width:10px;height:26px"></div>
+<div id="nrsignal2" class="signal-icon" style="width:10px;height:21px"></div>
+<div id="nrsignal1" class="signal-icon" style="width:10px;height:16px"></div>
+</span>
+<div>
+<span>&nbsp;</span>
+<span style="text-align: center;font-size: 11px;font-weight:bold;color: red" id="NRtype">5G</span>
+</span>
+</th>
+</table>
+
+<div style="text-align:center">
+<span class="color" id="bband">&nbsp;BandWork :&nbsp;<span class="colorc" id="bandB"></span>
+<span class="color" id="NRModefn">&nbsp;NRMode :&nbsp;<span class="colorb" id="NRMode"></span>
+</div>
+
+<div style="text-align:center">
+<h1>MWNS Official Mod</h1>
+<span class="color1" id="setna">&nbsp;Frekuensi :&nbsp;<span class="color2" id="band"></span>
+<br>
+<span class="color1" id="ballow">&nbsp;Band :&nbsp;<span class="color2" id="allowed"></span>
+</div>
+
+<div style="text-align:center">
+<span class="color">&nbsp;Net Mode :&nbsp;<span class="colorc" id="LNetMode"></span>
+<span class="color">&nbsp;Net Band :&nbsp;<span class="colorb" id="LNetworkBand"></span>
+<span class="color">&nbsp;LTE Band :&nbsp;<span class="colora" id="LLTEBand"></span>
+
+<span class="dropdown11"><input type="button" value="⌨️" style="height:17px;background-color: rgb(30, 114, 129);width:25px;font-weight: bold">
+<span class="dropdown-content11">
+<h1 style="font-weight: bold; font-size:18;color: rgb(0, 0, 0);">Daftar Kode Frekuensi Secara Manual</h1>
+<input type="text" id="calc" class="calco" onclick="copyText()">
+<script>
+function copyText() {
+var copyText = document.getElementById("calc");
+copyText.select();
+document.execCommand("copy");
+msg("Disalin, Buka Stabilisasi Frekuensi");
+}
+$(document).ready(function()
+{
+$('#calc').attr("placeholder", "Klik Untuk Menyalin Kode 📋");
+});
+</script>
+<br> <br>
+<table style="width:100%;height: 10px;font-size:16">
+<td style="background-color: rgb(10, 129, 133);">FDD
+</table>
+
+<input type="button" class="btn3 calco" value="B1-2100" onclick="dis('1')">
+<input type="button" class="btn3 calco" value="B2-1900" onclick="dis('2')">
+<input type="button" class="btn3 calco" value="B3-1800" onclick="dis('4')">
+<input type="button" class="btn3 calco" value="B4-1700" onclick="dis('8')">
+<input type="button" class="btn3 calco" value="B5-850" onclick="dis('10')">
+<input type="button" class="btn3 calco" value="B7-2600" onclick="dis('40')">
+<input type="button" class="btn3 calco" value="B8-900" onclick="dis('80')">
+<input type="button" class="btn3 calco" value="B11-1500" onclick="dis('400')">
+<input type="button" class="btn3 calco" value="B12-700" onclick="dis('800')">
+<input type="button" class="btn3 calco" value="B13-700" onclick="dis('1000')">
+<input type="button" class="btn3 calco" value="B14-700" onclick="dis('2000')">
+<input type="button" class="btn3 calco" value="B17-700" onclick="dis('10000')">
+<input type="button" class="btn3 calco" value="B18-850" onclick="dis('20000')">
+<input type="button" class="btn3 calco" value="B19-850" onclick="dis('40000')">
+<input type="button" class="btn3 calco" value="B20-800" onclick="dis('80000')">
+<input type="button" class="btn3 calco" value="B21-1500" onclick="dis('100000')">
+<input type="button" class="btn3 calco" value="B24-1600" onclick="dis('800000')">
+<input type="button" class="btn3 calco" value="B25-1900" onclick="dis('1000000')">
+<input type="button" class="btn3 calco" value="B26-850" onclick="dis('2000000')">
+<input type="button" class="btn3 calco" value="B28-700" onclick="dis('8000000')">
+<input type="button" class="btn3 calco" value="B29-700" onclick="dis('10000000')">
+<input type="button" class="btn3 calco" value="B30-2300" onclick="dis('20000000')">
+<input type="button" class="btn3 calco" value="B31-450" onclick="dis('40000000')">
+<input type="button" class="btn3 calco" value="B32-1500" onclick="dis('80000000')">
+<br> <br>
+<tr>
+<table style="width:100%;height: 10px;font-size:16">
+<td style="background-color: rgb(10, 129, 133);">TDD
+</table>
+<input type="button" class="btn3 calco" value="B34-2000" onclick="dis('200000000')">
+<input type="button" class="btn3 calco" value="B37-1900" onclick="dis('1000000000')">
+<input type="button" class="btn3 calco" value="B38-2600" onclick="dis('2000000000')">
+<input type="button" class="btn3 calco" value="B39-1900" onclick="dis('4000000000')">
+<input type="button" class="btn3 calco" value="B40-2300" onclick="dis('8000000000')">
+<input type="button" class="btn3 calco" value="B41-2500" onclick="dis('10000000000')">
+<input type="button" class="btn3 calco" value="B42-3500" onclick="dis('20000000000')">
+<input type="button" class="btn3 calco" value="B43-3700" onclick="dis('40000000000')">
+<input type="button" class="btn3 calco" value="B44-700" onclick="dis('80000000000')">
+<input type="button" class="btn3 calco" value="B46-5200" onclick="dis('200000000000')">
+<input type="button" class="btn3 calco" value="B47-5900" onclick="dis('400000000000')">
+<input type="button" class="btn3 calco" value="B48-3500" onclick="dis('800000000000')">
+<input type="button" class="btn3 calco" value="B49-3500" onclick="dis('1000000000000')">
+<input type="button" class="btn3 calco" value="B50-1500" onclick="dis('2000000000000')">
+<input type="button" class="btn3 calco" value="B51-1500" onclick="dis('4000000000000')">
+<input type="button" class="btn3 calco" value="B52-3300" onclick="dis('8000000000000')">
+<input type="button" class="btn3 calco" value="B53-2500" onclick="dis('10000000000000')">
+<br> <br>
+
+<label class="dropdown12">ℹ️
+<label class="dropdown-content12">
+<table style="width:100%;height: 30px;font-size:16">
+<td style="font-size:13;background-color: rgb(19, 42, 247);text-align:center;font-weight:bold">Penjelasan Singkat Untuk Daftar Ini
+</table>
+<table style="width:100%;background-color: rgb(186, 231, 22)">
+<td style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">Daftar ini berisi kode untuk semua frekuensi bagi mereka yang ingin menggabungkan frekuensi satu sama lain secara manual dan tidak secara otomatis
+<div>----------------------------------</div>
+<div style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">Cara kerjanya dalam hal menggabungkan lebih dari satu frekuensi</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Pilih frekuensi yang Anda inginkan dan gabungkan dengan frekuensi lain dan seterusnya setelah itu salin kode dan buka menu samping di atas dan pilih perintah untuk memasang frekuensi lalu tempel kode di tempat yang ditentukan pada gambar berikut</div>
+<img src="images/PSX.jpg" style="height: 100px;width: 200px;">
+</table>
+</label>
+</label>
+&nbsp;
+&nbsp;
+<input type="button" class="btn3" style="width: 40px; height: 25px; background-color: rgb(175, 11, 11)"value="Clear" onclick="clrr()">
+&nbsp;
+<input type="button" class="btn3 calco" style="width: 40px; height: 25px; background-color: rgb(245, 90, 90)" value="X" onclick="back()">
+&nbsp;
+<input type="button" class="btn3 calco" style="width: 40px; height: 25px" value="+" onclick="dis('+')">
+&nbsp;
+<input type="button" class="btn3 calco" style="width: 55px; height: 25px; background-color: rgb(145, 180, 18)" value="=" onclick="solve()">
+</div>
+
+<form>
+<div style="text-align:center">
+<label id="home1" style="display:none">
+<input type="button" class="btn2" id="dataoff" value="Data Off" style="height:30px;width:70px;font-weight: bold;text-align:center;color:rgb(255, 0, 0);font-size:12">
+</label>
+
+<label id="home2" style="display:none">
+<input type="button" class="btn2" id="dataon" value="Data On" style="height:30px;width:78px;font-weight: bold;text-align:center;color:rgb(30, 255, 0);font-size:12">
+</label>
+
+<input type="button" class="btn1" value="Home Page" style="height:30px;width:100px;font-weight: bold;text-align:center;color:yellow;font-size:12" onclick="hideSlider();B4A.CallSub('freeBrowse', true)">
+
+<input type="submit" class="btn1" value="Reboot" style="height:30px;width:85px;font-weight: bold;text-align:center;color:yellow;font-size:12">
+<div id="confirmBox">
+<div class="message" style="color:red;font-size:100%;font-weight: bold;text-align:center">
+</div>
+<span class="buttonn btn1 yes">&nbsp;&nbsp;&nbsp;&nbsp;Iya&nbsp;&nbsp;&nbsp;&nbsp;</span>
+&nbsp;
+<span class="buttonn btn1 no">&nbsp;&nbsp;&nbsp;&nbsp;Tidak&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</div>
+
+<input type="button" class="btn1" value="Login Page" style="height:30px;width:85px;font-weight: bold;text-align:center;color:yellow;font-size:12" onclick="hideSlider();B4A.CallSub('login', true)">
+</div>
+</fieldset>
+<fieldset>
+</form>
+
+<legend class="color" style="font-size:16;text-align:center"><big>Informasi Modem</big></legend>
+
+<table style="width:100%;text-align:center;font-weight:bold">
+<td style="width:25%" class="label">Status</td>
+<td style="width:25%" class="label">Model Perangkat</td>
+<td style="width:25%" class="label">Servis</td>
+<tr>
+<td style="width:25%" class="labelSignalInfo1" id="conn">Tidak Konek</td>
+<td style="width:25%" class="labelSignalInfo" id="devicename">Tidak dikenal</td>
+<td style="width:25%" class="labelSignalInfo1" id="brand">Tidak dikenal</td>
+
+<table style="width:100%;text-align:center;font-weight:bold">
+<td style="width:25%" id="pcit" class="label">PCI</td>
+<td style="width:25%" id="cid1" class="label">Cell ID</td>
+<td style="width:25%" id="tlac" class="label">TAC</td>
+<td style="width:25%" id="enbi1" class="label">eNBID</td>
+<tr>
+<td style="width:25%" id="pcit1"><span class="labelSignalInfo" id="pci">0</span>
+<td style="width:25%" id="cid2"><span class="labelSignalInfo" id="ceid">0</span>
+<td style="width:25%" id="tlac1"><span class="labelSignalInfo" id="lac">0</span>
+<td style="width:25%" id="enbi2"><span class="labelSignalInfo" id="enbi">0</span>
+
+<tr>
+<table style="width:100%;text-align:center;font-weight:bold">
+<td id="namenum" style="width:100%;font-size:15px;text-align:center;background-color:rgb(25, 151, 160);color:black;display:none" colspan="3">
+<span style="vertical-align: middle;font-weight:bold;font-size:23" id="flag"></span>&emsp;<span style="width:100%;font-weight:bold" id="name"></span>&emsp;<span id="num" style="font-weight:bold"></span>&emsp;
+<div class="dropdown3" id="run"><input class="cinfo" type="button"></span>
+<div class="dropdown-content3">
+<table>
+<div id="spww" style="min-height:350px;min-width:310px">
+<div style="margin:150px 0px 0px 0px;font-size: 16px;font-weight: bold">Mengambil Basis Data Jaringan Seluler</div>
+<img style="margin:50px 0px 0px 0px;width: 70" src="images/loading.gif"></img>
+</table>
+
+<table style="width: 100%;border:0px">
+<td class="center" style="width: 100%;padding: 5px 0px 5px 0px ;border:0px;background-color: rgb(45, 31, 136)">
+<label style="font-size: 14px;font-weight: bold;color: rgb(245, 236, 236)">Geser ke atas</label>
+&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;
+<input type="button" class="btn3" onClick="update()" value="Update Page" style="border-radius: 10px;height:20px;width:100px;font-weight: bold;font-size: 14px"></label>
+</table>
+</div>
+
+<tr>
+<td id="nei_cell" style="width:100%;font-size:15px;text-align:center;background-color:orange;color:black; display:none" colspan="3">
+&emsp;<span style="width:100%;color:black;font-weight:bold" id="nei_cellid"></span>
+
+<tr style="font-size:15px;text-align:center;background-color:green;color: black">
+<td style="position: inherit;color:yellow" colspan="3">
+D : <span id="CurrentDownload" style="color:black;font-weight:bold">0Kb/s</span>&emsp; U : <span id="CurrentUpload" style="color:black;font-weight:bold">0Kb/s</span>&emsp; T : <span id="Tupdown" style="color:black;font-weight:bold">0Kb/s</span>&emsp;(<span id="time" style="color:#A71206;font-weight:bold">00:00:00</span>)
+
+<tr style="font-size:15px;text-align:center;background-color:#C8B560;color:black">
+<td style="position: inherit;color:#461B7E;font-weight:bold" colspan="3">
+<span id="updown" style="color:black;font-weight:bold">0GB&emsp;</span>&emsp;(<span id="TotalConnectTime" style="font-weight:bold">0 Hari 0:00:00</span>)
+
+<tr style="font-size:15px;text-align:center;background-color:#7E2217;color:black">
+<td style="position: inherit;color:yellow" colspan="3">
+D : <span id="CurrentDownloadRate" style="color:black;font-weight:bold">0Kb/s</span>&nbsp;(<span id="CurrentDownloadRates" style="color:yellow;font-weight:bold">0B/s</span>)&emsp;&emsp; U : <span id="CurrentUploadRate" style="color:black;font-weight:bold">0Kb/s</span>&nbsp;(<span id="CurrentUploadRates" style="color:yellow;font-weight:bold">0B/s</span>)
+
+<tr>
+<td id="i23" style="width:100%;display:none;background-color:#ff0000;font-size:12px;color:rgb(0, 0, 0)">
+<span style="font-size:12px;font-weight:bold;text-align:center;color:black">WAN IPv4 : <span style="color:white;font-size:11px;font-weight:bold" id="ipv4"></span>
+<input class="cipbtnc" type="button" id="refreship"></span>
+
+<tr>
+<td id="i28" style="width:100%;display:none;background-color:#755050;font-size:12px;color:rgb(0, 0, 0)">
+<span style="font-size:12px;font-weight:bold;text-align:center;color:black">DNS IPv4 : <span style="color:white;font-size:11px;font-weight:bold" id="wanipv4dns"></span>
+
+<span class="dropdown7"><input class="cipbtne" type="button">
+<div class="dropdown-content7" style="border: 0px">
+<table style="width:100%;height: 30px">
+<td style="font-size:15;color: rgb(255, 255, 255);background-color: rgb(19, 42, 247);text-align:center;font-weight:bold">Ubah Pengaturan DNS Anda Di WebUi Lama
+</table>
+<table style="width: 100%; background-color: rgb(186, 231, 22)">
+<td style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1)">Klik tombol khusus di WebUi Lama di bawah</div>
+<img src="images/DNS.png" style="height: 100px;width: 250px;">
+<br>
+<table style="margin: auto;border: 0px">
+<td style="border: 0px" class="dropdown9"><input type="button" class="btn3" value="WebUi Old" style="height:25px;width:100px;border-radius: 10px;font-weight: bold;font-size: 14px">
+
+<div class="dropdown-content9">
+<table style="width:100%;background-color: rgb(186, 231, 22)">
+<td style="font-size:13;text-align:center;font-weight:bold;color: rgb(17, 7, 165);">Ubah Pengaturan DNS Anda Di WebUi Lama</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Simpan informasi tentang mode default</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Buat mode baru dan beri nama sesuka Anda</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Nama pengguna dan kata sandi tetap kosong</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Tambahkan sisa informasi ke mode default</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Aktifkan Setel Server DNS Secara Manual</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Tambahkan DNS Anda</div>
+<input type="button" class="btn3" value="Profile Management" style="height:25px;width:125px;border-radius: 10px;font-weight: bold;font-size: 14px" onclick="openPage('html/profilesmgr.html',$(this).html())"></table>
+</table>
+
+<tr>
+
+<table style="width:100%;height: 30px">
+<td style="font-size:15;color: rgb(255, 255, 255);background-color: rgb(19, 42, 247);text-align:center;font-weight:bold">Ubah Pengaturan DNS Anda Di WebUi Baru</div>
+</table>
+<table style="width: 100%; background-color: rgb(186, 231, 22)">
+<td style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1)">Klik tombol khusus di WebUi Baru di bawah ini</div>
+<img src="images/DNSUI.png" style="height: 100px;width: 250px;">
+<br>
+<table style="margin: auto;border: 0px">
+<td style="border: 0px" class="dropdown8"><input type="button" class="btn3" value="WebUi New" style="height:25px;width:100px;border-radius: 10px;font-weight: bold;font-size: 14px">
+
+<div class="dropdown-content8">
+<table style="width:100%;background-color: rgb(186, 231, 22)">
+<td style="font-size:13;text-align:center;font-weight:bold;color: rgb(17, 7, 165);">Ubah Pengaturan DNS Anda Di WebUi Baru</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Masuk ke mode default</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Simpan infonya</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Buat mode baru dan beri nama sesuka Anda</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Nama pengguna dan kata sandi tetap kosong</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Tambahkan sisa informasi ke mode default</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Aktifkan Setel Server DNS Secara Manual</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">* Tambahkan DNS Anda</div>
+<input type="button" class="btn3" value="Profile Management" style="height:25px;width:125px;border-radius: 10px;font-weight: bold;font-size: 14px" onclick="openPage('html/content.html#mobileconnection',$(this).html())">
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(17, 7, 165);">Catatan Penting :</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Di beberapa perangkat 5G, pengaturan ini disembunyikan karena kebijakan Huawei</div>
+<a href="https://www.adslgate.com/dsl/showpost.php?p=1083189869&postcount=6">Cara menampilkan pengaturan tersembunyi</a></table>
+</table>
+</table>
+<!-- CONTENT END -->
+
+<!-- SIGNALDETAILS START -->
+<tr>
+<table style="width:100%;text-align:center;font-weight:bold">
+<td class="label5g" style="width:15%;text-align:center;font-weight:bold" id="set">2G/3G/4G</td>
+
+<td class="label5g" style="text-align:center;font-weight:bold">Kekuatan sinyal<span class="dropdown13">&emsp;ℹ️
+<div class="dropdown-content13">
+<table style="width: 100%;font-weight: bold;text-align:center;color:rgb(0, 0, 0);font-size:16">
+<td style="width: 100%;height: 30px;font-weight: bold;text-align:center;color: white; background-color: rgb(12, 64, 207);font-size:13" colspan="2">Penjelasan Informasi Sinyal<tr>
+<td>RSSI
+<td style="font-weight: bold;text-align:center;color:rgb(2, 21, 128);font-size:12">Terima indikator kekuatan sinyal
+<tr>
+<td>ECIO
+<td style="font-weight: bold;text-align:center;color:rgb(2, 21, 128);font-size:12">Menunjukkan rasio pembawa (kualitas sinyal)
+<tr>
+<td>RSCP
+<td style="font-weight: bold;text-align:center;color:rgb(2, 21, 128);font-size:12">Menunjukkan kekuatan kode sinyal yang diterima
+<tr>
+<td>RSRP
+<td style="font-weight: bold;text-align:center;color:rgb(2, 21, 128);font-size:12">Daya penerima sinyal referensi
+<tr>
+<td>RSRQ
+<td style="font-weight: bold;text-align:center;color:rgb(2, 21, 128);font-size:12">Menerima kualitas bookmark
+<tr>
+<td>SINR
+<td style="font-weight: bold;text-align:center;color:rgb(2, 21, 128);font-size:12">Gangguan sinyal ditambah rasio kebisingan
+<tr>
+<td>TxPower
+<td style="font-weight: bold;text-align:center;color:rgb(2, 21, 128);font-size:12">Kekuatan kekuatan sinyal nirkabel yang ditransmisikan oleh router
+</table>
+
+<input type="button" value="Sumber" class="btn1" style="height:25px;width:55px;font-weight: bold;text-align:center;color:yellow;font-size:12" onclick="window.location.href='https://wiki.teltonika-networks.com/view/Mobile_Signal_Strength_Recommendations';">
+
+<td class="label5g" style="text-align:center;font-weight:bold">Kualitas</td>
+<td class="label5g" style="text-align:center;font-weight:bold">Persen</td>
+<!---->
+<tr id="rssier">
+<td style="width:20%;text-align:center;font-weight:bold" class="label">RSSI</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="rssi" style="text-align:center;font-weight:bold">0</span>
+<div id="rssireading"></div>
+<td id="rssiIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="rssipercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<tr id="rfmargin" style='display:none'>
+<td style="width:20%;text-align:center;font-weight:bold" class="label">RF-Margin</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="marginrf" style="text-align:center;font-weight:bold">0</span>
+<div id="rfreading"></div>
+<td id="rfIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="rfpercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<tr id="rxlev2g" style='display:none'>
+<td style="width:26%;text-align:center;font-weight:bold" class="label">2G-Rxlev</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="rxlev" style="text-align:center;font-weight:bold">0</span>
+<div id="rxlevreading"></div>
+<td id="rxlevIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="rxlevpercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!-------------------------3G-------------------------->
+<tr id="rsrqtr1">
+<td style="width:26%;text-align:center;font-weight:bold" id="rscpt" class="label">RSCP</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="rscp" style="text-align:center;font-weight:bold">0</span>
+<div id="rscpreading"></div>
+<td id="rscpIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="rscppercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<tr id="rsrqtr2">
+<td style="width:26%;text-align:center;font-weight:bold" id="eciot" class="label">ECIO</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="ecio" style="text-align:center;font-weight:bold">0</span>
+<div id="ecioreading"></div>
+<td id="ecioIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="eciopercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!-------------------------4G-------------------------->
+<tr id="rsrqtr3">
+<td style="width:20%;text-align:center;font-weight:bold" id="rsrpt" class="label">RSRP</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="rsrp" style="text-align:center;font-weight:bold">0</span>
+<div id="rsrpreading"></div>
+<td id="rsrpIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="rsrppercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<tr id="rsrqtr4">
+<td style="width:26%;text-align:center;font-weight:bold" id="rsrqt" class="label">RSRQ</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="rsrq" style="text-align:center;font-weight:bold">0</span>
+<div id="rsrqreading"></div>
+<td id="rsrqIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="rsrqpercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<tr id="rsrqtr5">
+<td style="width:26%;text-align:center;font-weight:bold" id="sinrt" class="label">SINR</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="sinr" style="text-align:center;font-weight:bold">0</span>
+<div id="sinrreading"></div>
+<td id="sinrIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="sinrpercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<tr id="rsrqtrtx" style='display:none'>
+<td style="width:26%;text-align:center;font-weight:bold" id="txt" class="label">TxPower</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="tx" style="text-align:center;font-weight:bold">0</span>
+<div id="txreading"></div>
+<td id="txIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="txpercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<table id="tbodybw" style="width: 100%;text-align:center;display:none">
+<td style="width:26%" class="label">4G-DL BW</td>
+<td class="labelSignalInfo" id="dlbandwidth">0</span>
+<td style="width:26%" class="label">4G-UL BW</td>
+<td class="labelSignalInfo" id="ulbandwidth">0</span>
+<!---->
+<tr id="dulmcs" style="width: 100%;text-align:center;display:none">
+<td style="width:26%" class="label">4G-DL MCS</td>
+<td class="labelSignalInfo" id="dlmcs">0</span>
+<td style="width:26%" class="label">4G-UL MCS</td>
+<td class="labelSignalInfo" id="ulmcs">0</span>
+<!---->
+<tr id="dlfreq" style="width: 100%;text-align:center;display:none">
+<td style="width:26%" class="label">4G-DL Freq</td>
+<td class="labelSignalInfo" id="dlfrequency">0</span>
+<td style="width:26%" class="label">4G-UL Freq</td>
+<td class="labelSignalInfo" id="ulfrequency">0</span>
+<!---->
+<tr id="earf" style="width: 100%;text-align:center;display:none">
+<td style="width:26%" class="label">4G-EARFCN</td>
+<td class="labelSignalInfo" id="arfcn" colspan="3">-</span>
+</table>
+<!-------------------------5G-------------------------->
+<table style="width:100%;text-align:center;font-weight:bold">
+<tr id="tbodynr0" style='display:none'>
+<td class="label5g" style="width:26%;text-align:center;font-weight:bold">5G</td>
+<td class="label5g" style="text-align:center;font-weight:bold">Kekuatan sinyal</span>
+<td class="label5g" style="text-align:center;font-weight:bold">Evaluasi</td>
+<td class="label5g" style="text-align:center;font-weight:bold">Persen</td>
+<!---->
+<tr id="tbodynr1" style='display:none'>
+<td style="width:26%;text-align:center;font-weight:bold" class="label">5G-RSRP</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="nrrsrp" style="text-align:center;font-weight:bold">0</span>
+<div id="nrrsrpreading"></div>
+<td id="nrrsrpIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="nrrsrppercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<tr id="tbodynr2" style='display:none'>
+<td style="width:26%;text-align:center;font-weight:bold" class="label">5G-RSRQ</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="nrrsrq" style="text-align:center;font-weight:bold">0</span>
+<div id="nrrsrqreading"></div>
+<td id="nrrsrqIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="nrrsrqpercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<tr id="tbodynr3" style='display:none'>
+<td style="width:26%;text-align:center;font-weight:bold" class="label">5G-SINR</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="nrsinr" style="text-align:center;font-weight:bold">0</span>
+<div id="nrsinrreading"></div>
+<td id="nrsinrIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="nrsinrpercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<tr id="tbodynr" style='display:none'>
+<td style="width:26%;text-align:center;font-weight:bold" class="label">5G-TxPower</td>
+<td style="width:48.5%;text-align:center;font-weight:bold" class="valFromLabelSignalDetails" colspan="1">
+<div class="signalRsrpcontainer"><span id="nrtx" style="text-align:center;font-weight:bold">0</span>
+<div id="nrtxreading"></div>
+<td id="nrtxIndicator" class="labelSignalInfo" style="text-align:center;font-weight:bold">-</td>
+<td id="nrtxpercent" class="labelSignalInfo" style="text-align:center;font-weight:bold">0%</td>
+<!---->
+<table id="tbodynr4" style="width: 100%;text-align:center;display:none">
+<td style="width:26%" class="label">5G-DL BW</td>
+<td class="labelSignalInfo" id="nrdlbw">0</span>
+<td style="width:26%" class="label">5G-UL BW</td>
+<td class="labelSignalInfo" id="nrulbw">0</span>
+<!---->
+<tr id="tbodynr5" style="width: 100%;text-align:center;display:none">
+<td style="width:26%" class="label">5G-DL MCS</td>
+<td class="labelSignalInfo" id="nrdlmcs">0</span>
+<td style="width:26%" class="label">5G-UL MCS</td>
+<td class="labelSignalInfo" id="nrulmcs">0</span>
+<!---->
+<tr id="tbodynr6" style="width: 100%;text-align:center;display:none">
+<td style="width:26%" class="label">5G-DL Freq</td>
+<td class="labelSignalInfo" id="nrdlfreq">0</span>
+<td style="width:26%" class="label">5G-UL Freq</td>
+<td class="labelSignalInfo" id="nrulfreq">0</span>
+<!---->
+<tr id="nrearf" style="width: 100%;text-align:center;display:none">
+<td style="width:26%" class="label">5G-EARFCN</td>
+<td class="labelSignalInfo" id="nrarfcn" colspan="3">-</span>
+</table>
+</fieldset>
+<!-- SIGNALDETAILS END -->
+
+<div id="infA" style="font-size:14px;font-weight:bold;text-align:center;color: rgb(255, 0, 0);display:none"><br><br>Kata Sandi Atau Nama Pengguna Salah<br><br><span style="font-size:14px;font-weight:bold;text-align:center;color: rgb(51, 180, 12)">Masukkan Nama Pengguna dan Kata Sandi yang Benar Sebelum Melanjutkan<br><br><span style="font-size:14px;font-weight:bold;text-align:center;color: rgb(180, 121, 12)" onclick="showLoginn()">Tekan Enter Disini<br><br><span style="font-size:14px;font-weight:bold;text-align:center;color: rgb(29, 197, 183)">⇧&emsp;Atau Klik Tombol Halaman Masuk Dari Atas</div>
+
+<div id="infB" style="font-size:14px;font-weight:bold;text-align:center;color: rgb(51, 180, 12);display:none"><br>Program Ini Hanya Melayani Pemilik Perangkat Huawei<br><br><span style="font-size:14px;font-weight:bold;text-align:center;color: rgb(180, 121, 12)">Program Tidak Bekerja Dengan Baik Pada Perangkat 5G Dengan Pembaruan Baru Karena Kebijakan Huawei<br><br></div>
+
+<div id="infC" style="font-size:14px;font-weight:bold;text-align:center;color: rgb(255, 0, 0);display:none"><br><br>Coba Lagi Dalam 2 Menit<br><br><span style="font-size:14px;font-weight:bold;text-align:center;color: rgb(51, 180, 12)">Masukkan Nama Pengguna dan Kata Sandi yang Benar Sebelum Melanjutkan<br><br><span style="font-size:14px;font-weight:bold;text-align:center;color: rgb(180, 121, 12)" onclick="showLoginn()">Tekan Enter Disini<br><br><span style="font-size:14px;font-weight:bold;text-align:center;color: rgb(29, 197, 183)">⇧&emsp;Atau Klik Tombol Halaman Masuk Dari Atas</div>
+
+<div id="infD" style="font-size:14px;font-weight:bold;text-align:center;color: rgb(255, 0, 0);display:none"><br><br>Ada Pengguna Lain Di Dalam, Coba Lagi Nanti<br><br></div>
+
+<!-- CONTROL START -->
+<fieldset id="callseting">
+<legend class="color" style="font-size:16"><big>Setting Koneksi</big></legend>
+<div style="text-align:center">
+<div class="dropdown2" id="speedrun"><input type="button" class="btn3" value="Uji Speed" style="height:30px;width:75px;font-weight: bold">
+<div class="dropdown-content2">
+<table style="width: 100%;border: 1px;font-size:smaller">
+<td style="border:1px">
+<div style="text-align:center;font-size: 15px;font-weight: bold">Menguji Speed</div>
+<div id="Speed" style="min-height:220px;min-width:250px">
+<tr>
+<td class="center" style="border:0px">
+<input type="button" class="btn3" onClick="update_iframe()" value="Test Again" style="border-radius: 10px;height:25px;width:85px;font-weight: bold;font-size: 14px"></label>
+&emsp;&emsp;
+<input type="button" class="btn3" id="speedrun1" value="Test Request" style="border-radius: 10px;height:25px;width:85px;font-weight: bold;font-size: 14px"></label>
+</tr>
+</table>
+</div>
+</div>
+
+<label id="sAuto">
+<input type="button" onclick="doSomea()" class="btn" id="btnAuto" value="Auto" style="height:27px;width:40px;font-weight: bold">
+<script>
+function doSomea(){
+document.getElementById("btnAuto").disabled = true;
+}
+</script>
+</label>
+<label id="s5G">
+<input type="button" onclick="doSomeb()" class="btn" id="btn5G" value="5G" style="height:23px;width:26px;font-weight: bold">
+<script>
+function doSomeb(){
+document.getElementById("btn5G").disabled = true;
+}
+</script>
+</label>
+<label id="s4G">
+<input type="button" onclick="doSomec()" class="btn" id="btnLTE" value="4G" style="height:23px;width:26px;font-weight: bold">
+<script>
+function doSomec(){
+document.getElementById("btnLTE").disabled = true;
+}
+</script>
+</label>
+<label id="s3G">
+<input type="button" onclick="doSomed()" class="btn" id="btn3G" value="3G" style="height:23px;width:26px;font-weight: bold">
+<script>
+function doSomed(){
+document.getElementById("btn3G").disabled = true;
+}
+</script>
+</label>
+<label id="s2G">
+<input type="button" onclick="doSomee()" class="btn" id="btn2G" value="2G" style="height:23px;width:26px;font-weight: bold">
+<script>
+function doSomee(){
+document.getElementById("btn2G").disabled = true;
+}
+</script>
+</label>
+<input type="button" onclick="doSomef()" class="btn4" id="accept" value="Selesaikan" style="height:30px;width:75px;font-weight: bold">
+<script>
+function doSomef(){
+document.getElementById("accept").disabled = true;
+}
+</script>
+
+<div class="dropdown4"><input type="button" class="btn3" value="⚙️" style="background-color: #ff0000;height:23px;width:35px;font-weight: bold">
+<!-- FREQUENCY START -->
+<div class="dropdown-content4">
+<table style="width: 100%;font-size:smaller">
+<div style="font-size:16;text-align:center;font-weight:bold;color: rgb(255, 0, 0)">Daftar Stabilisasi Frekuensi</div>
+<!-- 3G -->
+<fieldset style="width: auto">
+<legend class="colorb" style="font-size:14"><b><b>Frequencies 3G</b></b></legend>
+<font color="green">
+<label>
+<input type="radio" name="4" class="d-radio" id="WB06"><span class="eya1" id="w006">&nbsp;800-B6&nbsp;</label>
+<label>
+<input type="radio" name="4" class="d-radio" id="WB019"><span class="eya1" id="w0019">&nbsp;800-B19&nbsp;</label>
+<label>
+<input type="radio" name="4" class="d-radio" id="WB05"><span class="eya1" id="w005">&nbsp;850-B5&nbsp;</label>
+<label>
+<input type="radio" name="4" class="d-radio" id="WB08"><span class="eya1" id="w008">&nbsp;900-B8&nbsp;</label>
+<label>
+<input type="radio" name="4" class="d-radio" id="WB04"><span class="eya1" id="w004">&nbsp;1700-B4&nbsp;</label>
+<label>
+<input type="radio" name="4" class="d-radio" id="WB09"><span class="eya1" id="w009">&nbsp;1700-B9&nbsp;</label>
+<label>
+<input type="radio" name="4" class="d-radio" id="WB02"><span class="eya1" id="w002">&nbsp;1900-B2&nbsp;</label>
+<label>
+<input type="radio" name="4" class="d-radio" id="WB01"><span class="eya1" id="w001">&nbsp;2100-B1&nbsp;</label>
+</font>
+</fieldset>
+</table>
+
+<!-- 4G -->
+<fieldset style="width: auto">
+<legend class="colorb" style="font-size:14"><b><b>frekuensi 4G</b></b></legend>    
+<table style="width: 100%;text-align:center">
+
+<fieldset>
+<legend style="font-size:big;color: rgb(233, 105, 20)"><b><b>FDD</b></b></legend>
+<font color="orange">
+<label>
+<input type="checkbox" id="B012"><span class="eya1" id="0012">&nbsp;700-B12&nbsp;</label>
+<label>
+<input type="checkbox" id="B013"><span class="eya1" id="0013">&nbsp;700-B13&nbsp;</label>
+<label>
+<input type="checkbox" id="B017"><span class="eya1" id="0017">&nbsp;700-B17&nbsp;</label>
+<label>
+<input type="checkbox" id="B028"><span class="eya1" id="0028">&nbsp;700-B28&nbsp;</label>
+<label>
+<input type="checkbox" id="B029"><span class="eya1" id="0029">&nbsp;700-B29&nbsp;</label>
+<label>
+<input type="checkbox" id="B020"><span class="eya1" id="0020">&nbsp;800-B20&nbsp;</label>
+<label>
+<input type="checkbox" id="B027"><span class="eya1" id="0027">&nbsp;800-B27&nbsp;</label>
+<label>
+<input type="checkbox" id="B05"><span class="eya1" id="005">&nbsp;850-B5&nbsp;</label>
+<label>
+<input type="checkbox" id="B018"><span class="eya1" id="0018">&nbsp;850-B18&nbsp;</label>
+<label>
+<input type="checkbox" id="B019"><span class="eya1" id="0019">&nbsp;850-B19&nbsp;</label>
+<label>
+<input type="checkbox" id="B026"><span class="eya1" id="0026">&nbsp;850-B26&nbsp;</label>
+<label>
+<input type="checkbox" id="B08"><span class="eya1" id="008">&nbsp;900-B8&nbsp;</label>
+<label>
+<input type="checkbox" id="B032"><span class="eya1" id="0032">&nbsp;1500-B32&nbsp;</label>
+<label>
+<input type="checkbox" id="B04"><span class="eya1" id="004">&nbsp;1700-B4&nbsp;</label>
+<label>
+<input type="checkbox" id="B03"><span class="eya1" id="003">&nbsp;1800-B3&nbsp;</label>
+<label>
+<input type="checkbox" id="B02"><span class="eya1" id="002"&nbsp;>1900-B2&nbsp;</label>
+<label>
+<input type="checkbox" id="B025"><span class="eya1" id="0025">&nbsp;1900-B25&nbsp;</label>
+<label>
+<input type="checkbox" id="B01"><span class="eya1" id="001">&nbsp;2100-B1&nbsp;</label>
+<label>
+<input type="checkbox" id="B030"><span class="eya1" id="0030">&nbsp;2300-B30&nbsp;</label>
+<label>
+<input type="checkbox" id="B07"><span class="eya1" id="007">&nbsp;2600-B7&nbsp;</label>
+</font>
+</fieldset>
+
+<fieldset>
+<legend style="font-size:big;color: red"><b><b>TDD</b></b></legend>
+<font color="red">
+<label>
+<input type="checkbox" id="B039"><span class="eya1" id="0039">&nbsp;1900-B39&nbsp;</label>
+<label>
+<input type="checkbox" id="B034"><span class="eya1" id="0034">&nbsp;2000-B34&nbsp;</label>
+<label>
+<input type="checkbox" id="B040"><span class="eya1" id="0040">&nbsp;2300-B40&nbsp;</label>
+<label>
+<input type="checkbox" id="B041"><span class="eya1" id="0041">&nbsp;2500-B41&nbsp;</label>
+<label>
+<input type="checkbox" id="B038"><span class="eya1" id="0038">&nbsp;2600-B38&nbsp;</label>
+<label>
+<input type="checkbox" id="B042"><span class="eya1" id="0042">&nbsp;3500-B42&nbsp;</label>
+<label>
+<input type="checkbox" id="B043"><span class="eya1" id="0043">&nbsp;3700-B43&nbsp;</label>
+</font>
+</fieldset>
+</table>
+</fieldset>
+
+<!-- 5G -->
+<fieldset style="width: auto">
+<legend class="colorb" style="font-size:14"><b><b>frekuensi 5G</b></b></legend>
+<font color="#72aa2c">
+<label>
+<input type="radio" id="btnNSAa" name="1" class="d-radio"><span class="eya1" id="nsacola">&nbsp;NSA&nbsp;</label>
+<label>
+<input type="radio" id="btnSAa" name="1" class="d-radio"><span class="eya1" id="sacola">&nbsp;SA&nbsp;</label>
+<label>
+<input type="radio" id="btnSANSAa" name="1" class="d-radio"><span class="eya1" id="sansacola">&nbsp;SA+NSA&nbsp;</label>
+<input type="checkbox" id="btnNRa">&nbsp;4G + 5G&nbsp;</label>
+
+<label class="dropdown6">&nbsp;ℹ️
+<label class="dropdown-content6">
+<table style="width:100%;height: 30px;font-size:16">
+<td style="background-color: rgb(19, 42, 247);text-align:center;font-weight:bold">Penjelasan Singkat Mode 5G
+</table>
+<table style="width:100%;background-color: rgb(186, 231, 22)">
+<td style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">NSA
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Ini adalah 5G yang tidak independen dan tergantung pada jaringan 4G untuk mengangkat dan bekerja di semua wilayah</div>
+<div style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">SA</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Ini adalah 5G yang sepenuhnya independen, artinya berfungsi untuk mengunduh dan mengunggah file pada saat yang sama, tetapi tidak berfungsi di beberapa area</div>
+<div style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">SA+NSA</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Ini menggabungkan dua mode satu sama lain, yang merupakan favorit saya</div>
+<div style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">4G + 5G</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Jika opsi ini dipilih, 4G bekerja dengan 5G secara bersamaan, dan jika tidak dipilih, 4G bekerja sendiri</div>
+<div style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">Important Note :</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Sekarang dimungkinkan untuk menginstal mode 5G sendiri tanpa 4G bekerja dengannya, tetapi itu tidak akan berfungsi dengan baik karena tidak tersedia di semua wilayah</div>
+<div style="font-size:12;text-align:center;font-weight:bold;color: rgb(95, 7, 61);">Cara mengaktifkannya dengan tidak mengaktifkan frekuensi 4G dengan opsi 4G + 5G</div>
+</table>
+</font>
+</fieldset>
+<!-- FREQUENCY END -->
+<table style="border: 0px; margin: 5px 5px 5px 5px; text-align:center;font-weight:bold">
+<td style="width:100%; background-color: rgb(83, 119, 117);border-radius: 10px;border: 0px;" id="conne">Tidak Konek</td>
+<th><th><th><th><th><th><th>
+<th><th><th><th><th><th><th>
+<th><th><th><th><th><th><th>
+<td class="dropdown5" style="border: 0px">ℹ️
+<div class="dropdown-content5">
+<table style="width:100%;font-size:15">
+<td style="width:100%;height: 30px;background-color: rgb(19, 42, 247);text-align:center;font-weight:bold">Penjelasan Khusus Dalam Daftar Ini</td>
+<table style="background-color: rgb(186, 231, 22)">
+<td style="font-size:14;text-align:center;color: rgb(92, 51, 5);font-weight:bold">Daftar ini terutama untuk perangkat yang tidak mendukung pembacaan frekuensi secara otomatis, karena modifikasi pada pemrograman router dan kegagalan untuk mendapatkan jalur yang benar untuk perintah</div>
+<div style="width:100%;font-size:14;text-align:center;font-weight:bold;color: rgb(17, 7, 165);">Catatan Penting :</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Anda harus mengetahui frekuensi khusus di router sebelum memasang frekuensi</div>
+</table>
+<td style="border: 0">
+<input type="button" class="btn4" onclick="doSomething1()" value="Selesaikan" id="accept1" style="margin: 0px 0px 0px 40px;height:30px;width:75px;border-radius: 10px;font-weight: bold;font-size: 12px">
+<script>
+function doSomething1(){
+document.getElementById("accept1").disabled = true;
+}
+</script>
+</table>
+</div>
+</fieldset>
+<!-- CONTROL END -->
+
+<!-- FREQUENCY START -->
+<fieldset id="rsrqtr8">
+<legend class="color" style="font-size:16;text-align:center"><big>Stabilitas frekuensi</big></legend>
+<!-- 3G -->
+<fieldset id="ss3G">
+<legend class="colorb" style="font-size:14"><b><b>frekuensi 3G</b></b></legend>
+<font color="#72aa2c">
+<div style="text-align:center">
+<label id="sWB6" style="display:inline-block;display:none">
+<input type="radio" name="3" class="b-radio" id="WB6"><span class="eya" id="w06">&nbsp;800MHz - B6&nbsp;</label>
+<label id="sWB19" style="display:inline-block;display:none">
+<input type="radio" name="3" class="b-radio" id="WB19"><span class="eya" id="w019">&nbsp;800MHz - B19&nbsp;</label>
+<label id="sWB5" style="display:inline-block;display:none">
+<input type="radio" name="3" class="b-radio" id="WB5"><span class="eya" id="w05">&nbsp;850MHz - B5&nbsp;</label>
+<label id="sWB8" style="display:inline-block">
+<input type="radio" name="3" class="b-radio" id="WB8"><span class="eya" id="w08">&nbsp;900MHz - B8&nbsp;</label>
+<label id="sWB4" style="display:inline-block;display:none">
+<input type="radio" name="3" class="b-radio" id="WB4"><span class="eya" id="w04">&nbsp;1700MHz - B4&nbsp;</label>
+<label id="sWB9" style="display:inline-block;display:none">
+<input type="radio" name="3" class="b-radio" id="WB9"><span class="eya" id="w09">&nbsp;1700MHz - B9&nbsp;</label>
+<label id="sWB2" style="display:inline-block;display:none">
+<input type="radio" name="3" class="b-radio" id="WB2"><span class="eya" id="w02">&nbsp;1900MHz - B2&nbsp;</label>
+<label id="sWB1" style="display:inline-block">
+<input type="radio" name="3" class="b-radio" id="WB1"><span class="eya" id="w01">&nbsp;2100MHz - B1&nbsp;</label>
+</div>
+</font>
+</fieldset>
+
+<!-- 4G -->
+<fieldset id="ss4G">
+<legend class="colorb" style="font-size:14"><b><b>frekuensi 4G</b></b></legend>
+
+<table style="width: 100%;border: 0px;text-align:center">
+<th>
+<div style="text-align: left">
+<fieldset>
+<legend style="font-size:big;color: green"><b><b>FDD</b></b></legend>
+<font color="green">
+<div>
+<label id="sB12" style="display:inline-block;display:none">
+<input type="checkbox" id="B12"><span class="eya" id="012">&nbsp;700 - B12&nbsp;</label>
+<div>
+<label id="sB13" style="display:inline-block;display:none">
+<input type="checkbox" id="B13"><span class="eya" id="013">&nbsp;700 - B13&nbsp;</label>
+<div>
+<label id="sB17" style="display:inline-block;display:none">
+<input type="checkbox" id="B17"><span class="eya" id="017">&nbsp;700 - B17&nbsp;</label>
+<div>
+<label id="sB28" style="display:inline-block">
+<input type="checkbox" id="B28"><span class="eya" id="028">&nbsp;700 - B28&nbsp;</label>
+<div>
+<label id="sB29" style="display:inline-block;display:none">
+<input type="checkbox" id="B29"><span class="eya" id="029">&nbsp;700 - B29&nbsp;</label>
+<div>
+<label id="sB20" style="display:inline-block;display:none">
+<input type="checkbox" id="B20"><span class="eya" id="020">&nbsp;800 - B20&nbsp;</label>
+<div>
+<label id="sB27" style="display:inline-block;display:none">
+<input type="checkbox" id="B27"><span class="eya" id="027">&nbsp;800 - B27&nbsp;</label>
+<div>
+<label id="sB5" style="display:inline-block;display:none">
+<input type="checkbox" id="B5"><span class="eya" id="05">&nbsp;850 - B5&nbsp;</label>
+<div>
+<label id="sB18" style="display:inline-block;display:none">
+<input type="checkbox" id="B18"><span class="eya" id="018">&nbsp;850 - B18&nbsp;</label>
+<div>
+<label id="sB19" style="display:inline-block;display:none">
+<input type="checkbox" id="B19"><span class="eya" id="019">&nbsp;850 - B19&nbsp;</label>
+<div>
+<label id="sB26" style="display:inline-block;display:none">
+<input type="checkbox" id="B26"><span class="eya" id="026">&nbsp;850 - B26&nbsp;</label>
+<div>
+<label id="sB8" style="display:inline-block;display:none">
+<input type="checkbox" id="B8"><span class="eya" id="08">&nbsp;900 - B8&nbsp;</label>
+<div>
+<label id="sB32" style="display:inline-block;display:none">
+<input type="checkbox" id="B32"><span class="eya" id="032">&nbsp;1500 - B32&nbsp;</label>
+<div>
+<label id="sB4" style="display:inline-block;display:none">
+<input type="checkbox" id="B4"><span class="eya" id="04">&nbsp;1700 - B4&nbsp;</label>
+<div>
+<label id="sB3" style="display:inline-block">
+<input type="checkbox" id="B3"><span class="eya" id="03">&nbsp;1800 - B3&nbsp;</label>
+<div>
+<label id="sB2" style="display:inline-block;display:none">
+<input type="checkbox" id="B2"><span class="eya" id="02">&nbsp;1900 - B2&nbsp;</label>
+<div>
+<label id="sB25" style="display:inline-block;display:none">
+<input type="checkbox" id="B25"><span class="eya" id="025">&nbsp;1900 - B25&nbsp;</label>
+<div>
+<label id="sB1" style="display:inline-block">
+<input type="checkbox" id="B1"><span class="eya" id="01">&nbsp;2100 - B1&nbsp;</label>
+<div>
+<label id="sB30" style="display:inline-block;display:none">
+<input type="checkbox" id="B30"><span class="eya" id="030">&nbsp;2300 - B30&nbsp;</label>
+<div>
+<label id="sB7" style="display:inline-block;display:none">
+<input type="checkbox" id="B7"><span class="eya" id="07">&nbsp;2600 - B7&nbsp;</label>
+</font>
+</fieldset>
+
+<th>
+<div style="text-align: left">
+<fieldset>
+<legend style="font-size:big;color: red"><b><b>TDD</b></b></legend>
+<font color="red">
+<div>
+<label id="sB39" style="display:inline-block;display:none">
+<input type="checkbox" id="B39"><span class="eya" id="039">&nbsp;1900 - B39&nbsp;</label>
+<div>
+<label id="sB34" style="display:inline-block;display:none">
+<input type="checkbox" id="B34"><span class="eya" id="034">&nbsp;2000 - B34&nbsp;</label>
+<div>
+<label id="sB40" style="display:inline-block">
+<input type="checkbox" id="B40"><span class="eya" id="040">&nbsp;2300 - B40&nbsp;</label>
+<div>
+<label id="sB41" style="display:inline-block">
+<input type="checkbox" id="B41"><span class="eya" id="041">&nbsp;2500 - B41&nbsp;</label>
+<div>
+<label id="sB38" style="display:inline-block">
+<input type="checkbox" id="B38"><span class="eya" id="038">&nbsp;2600 - B38&nbsp;</label>
+<div>
+<label id="sB42" style="display:inline-block;display:none">
+<input type="checkbox" id="B42"><span class="eya" id="042">&nbsp;3500 - B42&nbsp;</label>
+<div>
+<label id="sB43" style="display:inline-block;display:none">
+<input type="checkbox" id="B43"><span class="eya" id="043">&nbsp;3700 - B43&nbsp;</label>
+</font>
+</table>
+</fieldset>
+
+<!-- 5G -->
+<fieldset id="ss5G" style="display:none">
+<legend class="colorb" style="font-size:14"><b><b>Frequencies 5G</b></b></legend>
+<font color="#72aa2c">
+<div style="text-align:center">
+<label>
+<input type="radio" id="btnNSA" name="2" class="b-radio"><span class="eya" id="nsacol">&nbsp;NSA&nbsp;</label>
+&nbsp;
+<label>
+<input type="radio" id="btnSA" name="2" class="b-radio"><span class="eya" id="sacol">&nbsp;SA&nbsp;</label>
+&nbsp;
+<label>
+<input type="radio" id="btnSANSA" name="2" class="b-radio"><span class="eya" id="sansacol">&nbsp;SA+NSA&nbsp;</label>
+<label style="font-size:12;font-weight: bold">
+<input type="checkbox" id="btnNR">&nbsp;4G + 5G&nbsp;</label>
+
+<label class="dropdown10">&nbsp;&nbsp;ℹ️
+<label class="dropdown-content10">
+<table style="width:100%;height: 30px;font-size:16">
+<td style="background-color: rgb(19, 42, 247);text-align:center;font-weight:bold">Penjelasan Singkat Mode 5G
+</table>
+<table style="width:100%;background-color: rgb(186, 231, 22)">
+<td style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">NSA
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Ini adalah 5G yang tidak independen dan tergantung pada jaringan 4G untuk mengangkat dan bekerja di semua wilayah</div>
+<div style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">SA</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Ini adalah 5G yang sepenuhnya independen, artinya berfungsi untuk mengunduh dan mengunggah file pada saat yang sama, tetapi tidak berfungsi di beberapa area</div>
+<div style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">SA+NSA</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Ini menggabungkan dua mode satu sama lain, yang merupakan favorit saya</div>
+<div style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">4G + 5G</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Jika opsi ini dipilih, 4G bekerja dengan 5G secara bersamaan, dan jika tidak dipilih, 4G bekerja sendiri</div>
+<div style="font-size:14;text-align:center;font-weight:bold;color: rgb(39, 6, 185);">Catatan penting :</div>
+<div style="font-size:13;text-align:center;font-weight:bold;color: rgb(207, 1, 1);">Sekarang dimungkinkan untuk menginstal mode 5G sendiri tanpa 4G bekerja dengannya, tetapi itu tidak akan berfungsi dengan baik karena tidak tersedia di semua wilayah</div>
+<div style="font-size:12;text-align:center;font-weight:bold;color: rgb(95, 7, 61);">Cara mengaktifkannya dengan tidak mengaktifkan frekuensi 4G dengan opsi 4G + 5G</div>
+</font>
+</fieldset>
+<!-- FREQUENCY END -->
+</body>
+</html>
